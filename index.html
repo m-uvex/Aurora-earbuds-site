@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Aurora Earbuds - Premium wireless earbuds with cutting-edge technology. Experience superior sound quality, 30-hour battery life, and adaptive audio.">
+    <meta name="keywords" content="wireless earbuds, premium audio, bluetooth, noise cancellation, aurora">
+    <meta name="author" content="Web Development Showcase">
+    <title>Aurora Earbuds - Premium Wireless Audio Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/OBJLoader.js"></script>
+</head>
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <div class="nav-logo" aria-label="Aurora Earbuds">Aurora</div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#features" class="nav-link" aria-label="View features">Features</a>
+                <a href="#specs" class="nav-link" aria-label="View specifications">Specs</a>
+                <a href="#reviews" class="nav-link" aria-label="Read reviews">Reviews</a>
+                <a href="#purchase" class="nav-link" aria-label="Purchase earbuds">Buy Now</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" role="banner">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="demo-badge" role="note" aria-label="This is a showcase demo">🎨 SHOWCASE DEMO</div>
+                <h1 class="hero-title">Aurora Earbuds</h1>
+                <p class="hero-tagline">Sound That Moves With You</p>
+                <p class="hero-description">Experience premium audio with cutting-edge technology that adapts to your lifestyle.</p>
+                <button class="cta-button" aria-label="Discover more about Aurora Earbuds">Discover More</button>
+            </div>
+            <div class="hero-model" role="img" aria-label="3D model of Aurora Earbuds">
+                <div class="earbuds-container">
+                    <div class="earbuds-3d" id="earbuds3D">
+                        <canvas id="earbudsCanvas" class="earbuds-canvas" aria-hidden="true"></canvas>
+                        <div class="loading-spinner" aria-live="polite">
+                            <div class="spinner" aria-hidden="true"></div>
+                            <p>Loading 3D Model...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator" role="button" aria-label="Scroll down to see more content" tabindex="0">
+            <div class="scroll-arrow" aria-hidden="true"></div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="features-content">
+                <div class="features-video">
+                    <div class="video-container">
+                        <div class="video-placeholder">
+                            <i class="fas fa-play"></i>
+                            <p>See Aurora in Action</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="features-list">
+                    <h2>Revolutionary Features</h2>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Adaptive Sound</h3>
+                            <p>AI-powered audio that adjusts to your environment and preferences in real-time.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>30-Hour Battery</h3>
+                            <p>Extended battery life with fast charging and wireless charging case.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Water Resistant</h3>
+                            <p>IPX7 rating for worry-free use during workouts and outdoor activities.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h3>Bluetooth 5.3</h3>
+                            <p>Ultra-stable connection with low latency for seamless audio experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specs Section -->
+    <section class="specs" id="specs">
+        <div class="container">
+            <h2>Technical Specifications</h2>
+            <div class="specs-grid">
+                <div class="spec-card" data-spec="battery">
+                    <div class="spec-icon">
+                        <i class="fas fa-battery-three-quarters"></i>
+                    </div>
+                    <h3>Battery Life</h3>
+                    <p>30 hours total</p>
+                    <div class="spec-tooltip">
+                        <p>8 hours continuous playback + 22 hours from charging case. Fast charge: 15 minutes = 3 hours playback.</p>
+                    </div>
+                </div>
+                <div class="spec-card" data-spec="sound">
+                    <div class="spec-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Sound Quality</h3>
+                    <p>Hi-Res Audio</p>
+                    <div class="spec-tooltip">
+                        <p>40mm dynamic drivers with custom tuning, 20Hz-40kHz frequency response, lossless audio support.</p>
+                    </div>
+                </div>
+                <div class="spec-card" data-spec="water">
+                    <div class="spec-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Water Resistance</h3>
+                    <p>IPX7 Rating</p>
+                    <div class="spec-tooltip">
+                        <p>Waterproof up to 1 meter for 30 minutes. Perfect for intense workouts and outdoor adventures.</p>
+                    </div>
+                </div>
+                <div class="spec-card" data-spec="connectivity">
+                    <div class="spec-icon">
+                        <i class="fas fa-bluetooth"></i>
+                    </div>
+                    <h3>Connectivity</h3>
+                    <p>Bluetooth 5.3</p>
+                    <div class="spec-tooltip">
+                        <p>Ultra-low latency, extended range up to 30m, multi-device pairing, and advanced codec support.</p>
+                    </div>
+                </div>
+                <div class="spec-card" data-spec="noise">
+                    <div class="spec-icon">
+                        <i class="fas fa-volume-mute"></i>
+                    </div>
+                    <h3>Noise Cancellation</h3>
+                    <p>Active ANC</p>
+                    <div class="spec-tooltip">
+                        <p>Advanced noise cancellation technology that adapts to your environment and reduces up to 40dB of ambient noise.</p>
+                    </div>
+                </div>
+                <div class="spec-card" data-spec="weight">
+                    <div class="spec-icon">
+                        <i class="fas fa-weight-hanging"></i>
+                    </div>
+                    <h3>Weight</h3>
+                    <p>5.2g each</p>
+                    <div class="spec-tooltip">
+                        <p>Ultra-lightweight design with ergonomic fit for all-day comfort without fatigue or pressure points.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2>What Our Users Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-avatar">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23667eea'/%3E%3Ctext x='30' y='35' text-anchor='middle' fill='white' font-family='Arial' font-size='24'%3ES%3C/text%3E%3C/svg%3E" alt="Sarah">
+                    </div>
+                    <div class="review-content">
+                        <h4>Sarah Chen</h4>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The sound quality is absolutely incredible. I've never experienced such clarity and depth in wireless earbuds before."</p>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-avatar">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%23f093fb'/%3E%3Ctext x='30' y='35' text-anchor='middle' fill='white' font-family='Arial' font-size='24'%3EM%3C/text%3E%3C/svg%3E" alt="Mike">
+                    </div>
+                    <div class="review-content">
+                        <h4>Mike Rodriguez</h4>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"Perfect for my daily workouts. The water resistance and secure fit give me confidence during intense training sessions."</p>
+                    </div>
+                </div>
+                <div class="review-card">
+                    <div class="review-avatar">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Ccircle cx='30' cy='30' r='30' fill='%234facfe'/%3E%3Ctext x='30' y='35' text-anchor='middle' fill='white' font-family='Arial' font-size='24'%3EA%3C/text%3E%3C/svg%3E" alt="Alex">
+                    </div>
+                    <div class="review-content">
+                        <h4>Alex Thompson</h4>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p>"The battery life is amazing! I can go days without charging, and the fast charge feature is incredibly convenient."</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Performance Charts -->
+            <div class="performance-charts">
+                <h3>Performance Metrics</h3>
+                <div class="charts-grid">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h4>Battery Life</h4>
+                            <div class="chart-icon">
+                                <i class="fas fa-battery-full"></i>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <div class="chart-bar" data-value="30">
+                                <div class="chart-fill"></div>
+                                <div class="chart-value">30h</div>
+                            </div>
+                            <div class="chart-label">Hours</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h4>Sound Quality</h4>
+                            <div class="chart-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <div class="chart-bar" data-value="95">
+                                <div class="chart-fill"></div>
+                                <div class="chart-value">95%</div>
+                            </div>
+                            <div class="chart-label">Quality</div>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h4>Connectivity</h4>
+                            <div class="chart-icon">
+                                <i class="fas fa-wifi"></i>
+                            </div>
+                        </div>
+                        <div class="chart">
+                            <div class="chart-bar" data-value="98">
+                                <div class="chart-fill"></div>
+                                <div class="chart-value">98%</div>
+                            </div>
+                            <div class="chart-label">Stability</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Purchase Section -->
+    <section class="purchase" id="purchase">
+        <div class="container">
+            <div class="purchase-content">
+                <div class="product-showcase">
+                    <h2>Choose Your Aurora</h2>
+                    <div class="color-options">
+                        <div class="color-option active" data-color="midnight">
+                            <div class="color-preview midnight"></div>
+                            <span>Midnight Black</span>
+                        </div>
+                        <div class="color-option" data-color="aurora">
+                            <div class="color-preview aurora"></div>
+                            <span>Aurora Blue</span>
+                        </div>
+                        <div class="color-option" data-color="silver">
+                            <div class="color-preview silver"></div>
+                            <span>Silver White</span>
+                        </div>
+                    </div>
+                    <div class="product-image">
+                        <div class="earbuds-display" id="productDisplay">
+                            <canvas id="productCanvas" class="earbuds-canvas"></canvas>
+                            <div class="loading-spinner">
+                                <div class="spinner"></div>
+                                <p>Loading 3D Model...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="purchase-details">
+                    <div class="price-section">
+                        <span class="original-price">$299</span>
+                        <span class="current-price">$249</span>
+                        <span class="discount">Save $50</span>
+                    </div>
+                    <div class="features-highlight">
+                        <div class="feature-highlight">
+                            <i class="fas fa-check"></i>
+                            <span>Free shipping worldwide</span>
+                        </div>
+                        <div class="feature-highlight">
+                            <i class="fas fa-check"></i>
+                            <span>2-year warranty</span>
+                        </div>
+                        <div class="feature-highlight">
+                            <i class="fas fa-check"></i>
+                            <span>30-day money-back guarantee</span>
+                        </div>
+                    </div>
+                    <button class="buy-button" id="buyButton">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Add to Cart</span>
+                    </button>
+                    <div class="payment-options">
+                        <p>Secure payment with</p>
+                        <div class="payment-icons">
+                            <i class="fab fa-cc-visa"></i>
+                            <i class="fab fa-cc-mastercard"></i>
+                            <i class="fab fa-cc-paypal"></i>
+                            <i class="fab fa-apple-pay"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Notice -->
+    <section class="demo-notice">
+        <div class="container">
+            <div class="demo-content">
+                <h2>🎨 This is a Showcase Demo</h2>
+                <p>This Aurora earbuds website is a <strong>demonstration project</strong> created to showcase modern web development skills and interactive design capabilities.</p>
+                <div class="demo-features">
+                    <div class="demo-feature">
+                        <i class="fas fa-code"></i>
+                        <span>Interactive 3D Elements</span>
+                    </div>
+                    <div class="demo-feature">
+                        <i class="fas fa-magic"></i>
+                        <span>Particle Animations</span>
+                    </div>
+                    <div class="demo-feature">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Responsive Design</span>
+                    </div>
+                    <div class="demo-feature">
+                        <i class="fas fa-palette"></i>
+                        <span>Modern UI/UX</span>
+                    </div>
+                </div>
+                <div class="demo-cta">
+                    <p><strong>Need a similar website for your business?</strong></p>
+                    <p>This demo showcases the kind of premium, interactive websites I can create for you.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Web Development Showcase</h3>
+                    <p>Interactive website demonstration featuring modern web technologies and premium design.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Technologies Used</h4>
+                    <ul>
+                        <li>HTML5 & CSS3</li>
+                        <li>Vanilla JavaScript</li>
+                        <li>Canvas API</li>
+                        <li>Web Audio API</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Features Demonstrated</h4>
+                    <ul>
+                        <li>3D Interactive Elements</li>
+                        <li>Particle Systems</li>
+                        <li>Scroll Animations</li>
+                        <li>Responsive Design</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Developer</h4>
+                    <div class="social-links">
+                        <a href="#" title="Fiverr Profile"><i class="fas fa-briefcase"></i></a>
+                        <a href="#" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" title="Portfolio"><i class="fas fa-globe"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p><strong>⚠️ Demo Notice:</strong> This is a showcase project for demonstration purposes only. Aurora earbuds is a fictional product created for this demo.</p>
+                <p>&copy; 2024 Web Development Showcase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
